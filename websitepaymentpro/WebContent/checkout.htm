@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<LINK rel=stylesheet type=text/css href="https://www.paypalobjects.com/WEBSCR-630-20100621-1/css/core/core.css" media=screen>
+<title>Checkout</title>
+</head>
+<body>
+<form name="checkoutForm" method="POST">
+<table>
+	<tr>
+		<td colspan="2">Online service subscription</td>
+	</tr>
+	<tr>
+		<td>
+			Please select your plan:		
+		</td>
+		<td>
+			<select id="billingPeriodSelect" name="BILLINGPERIOD">
+				<option value="Day">Daily - $1</option>
+				<option value="Week">Weekly - $6</option>
+				<option value="Month">Monthly - $23</option>
+				<option value="Year">Yearly - $24</option>
+			</select>	
+		</td>
+	</tr>	
+	<tr><td colspan="2"></td></tr>
+	<tr><td colspan="2"></td></tr>
+	<tr valign="bottom">
+		<td>
+			<input type="button" class="button" value="Checkout with credit card" onclick="directPaymentCheckout()"/></td>
+		<td>
+			<input type="button" class="button" value="Checkout with PayPal account" onclick="expressCheckout()"/>
+			<!-- input type="image" name="submit" onclick="expressCheckout()" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0"/-->				
+		</td>
+		<td>
+			<input type="button" class="button" value="Get Recurring Profile Detail" onclick="getRecurringPaymentsProfileDetails()"/>
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+<script>
+	function directPaymentCheckout() {
+		document.checkoutForm.action = "directpayment/billinginfo.jsp";
+		document.checkoutForm.submit();
+	}
+
+	function expressCheckout() {
+		document.checkoutForm.action = "expresscheckout/set_express_checkout.jsp";		
+		document.checkoutForm.submit();
+	}
+
+	function getRecurringPaymentsProfileDetails() {
+		window.location.href = "get_profile_detail.jsp";
+	}
+	
+</script>
+</html>
